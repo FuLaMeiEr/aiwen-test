@@ -17,7 +17,9 @@ public class IpController {
 
     @RequestMapping(value = "/ipPosition")
     public IpBean ipPosition(String ip) {
-        String fileName = "C:\\Users\\Wahaha\\Downloads\\IP_trial_2020M05_single_WGS84_dat\\IP_trial_2020M05_single_WGS84.dat";
+
+        String fileName = "C:\\Users\\Wahaha\\Downloads\\IP_trial_2020M05_single_WGS84_dat\\IP_trial_20" +
+                "20M05_single_WGS84.dat";
         IPLocate iplocate = IPLocate.loadDat(fileName);
 
         IpBean ipBean = new IpBean();
@@ -29,8 +31,11 @@ public class IpController {
         ipBean.setCountry(ipResult[5]);
         ipBean.setProvince(ipResult[6]);
         ipBean.setCity(ipResult[7]);
-
         return ipBean;
+        // 剩余内存 现在
+
+
+
     }
 
 
