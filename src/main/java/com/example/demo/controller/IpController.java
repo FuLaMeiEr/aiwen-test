@@ -83,7 +83,7 @@ public class IpController {
         Map<String, LocationBean> children = countryMap.getChildren();
 
         String country = countryMap.getZhName();
-        for (String key : children.keySet()) {
+     /*    for (String key : children.keySet()) {
             LocationBean location = children.get(key);
             if (ipBean.getProvince().contains(location.getZhName())) {
                 pro = location.getZhName();
@@ -91,10 +91,10 @@ public class IpController {
             if (ipBean.getCity().contains(location.getZhName())) {
                 city = location.getZhName();
             }
-        }
+        }*/
 
 
-      /*  String province = ipBean.getProvince().replaceAll("[^\u4e00-\u9fa5a-zA-Z0-9]", "");
+        String province = ipBean.getProvince().replaceAll("[^\u4e00-\u9fa5a-zA-Z0-9]", "");
         String ct = ipBean.getCity().replaceAll("[^\u4e00-\u9fa5a-zA-Z0-9]", "");
         String enName;
         for (String key : children.keySet()) {
@@ -106,7 +106,7 @@ public class IpController {
             if (ct.contains(enName)) {
                 city = enName;
             }
-        }*/
+        }
 
 
         System.out.println(country + "|" + pro + "|" + city);

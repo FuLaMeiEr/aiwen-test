@@ -41,6 +41,7 @@ public class ResultTest {
         LocationBean countryMap = locationBeanMap.get(ipBean.getCountry());
 
 
+/*
         Map<String, LocationBean> children = countryMap.getChildren();
 
         country = countryMap.getZhName();
@@ -53,15 +54,15 @@ public class ResultTest {
                 city = location.getZhName();
             }
         }
+*/
 
 
 
 
-       /* Map<String, LocationBean> children = countryMap.getChildren();
+        Map<String, LocationBean> children = countryMap.getChildren();
         LocationBean locationBean = children.get(ipBean.getCity());
-        System.out.println(locationBean.getData());*/
+        System.out.println(locationBean.getData());
 
-       /*
         Map<String, String> data = countryMap.getData();
 
         for(String key : data.keySet()){
@@ -75,7 +76,6 @@ public class ResultTest {
             }
 
         }
-*/
 
         System.out.println(country + "|" + pro + "|" + city);
 
@@ -83,21 +83,5 @@ public class ResultTest {
 
     }
 
-/*
 
-    String i = "";
-    String s = "";
-    b = data.containsValue(ipBean.getProvince());
-
-        if (b = true) {
-        i = ipBean.getProvince();
-    }
-
-    boolean b1 = data.containsValue(ipBean.getCity());
-        if (b1 = true) {
-        s = ipBean.getCity();
-    }
-
-    String name = countryMap.getEnName();
-        System.out.println(name + "-------" + i + "-------" + s);*/
 }
