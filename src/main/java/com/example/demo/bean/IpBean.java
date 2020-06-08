@@ -16,6 +16,7 @@ public class IpBean {
 
     private String ip;
 
+    private String countryCode;
     private String country;
 
     private String province;

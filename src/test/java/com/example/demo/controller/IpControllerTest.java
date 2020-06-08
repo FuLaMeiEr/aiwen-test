@@ -21,8 +21,12 @@ class IpControllerTest {
     @Autowired
     private IpController ipController;
 
+    private String ip;
+
+    private IpBean ipBean;
+
     @Test
-    void ipPosition() {
+    void ipPosition() throws IOException {
 
 
         Runtime r = Runtime.getRuntime();
@@ -31,8 +35,11 @@ class IpControllerTest {
         long startTime = System.currentTimeMillis();
         long startMem = r.freeMemory();
 
-        IpBean ipBean = ipController.ipPosition("1.11.255.25");
-        //IpBean ipBean = ipController.ipPosition("17563647");
+        ArrayList<String> ipLists = this.readFromTextFile();
+
+        for (int i = 0; i < ipLists.size(); i++) {
+            ipBean = ipController.ipPosition(ipLists.get(i));
+        }
 
         long endMem = r.freeMemory();
 
@@ -47,29 +54,19 @@ class IpControllerTest {
     }
 
 
-
-
-
-
-    public ArrayList<String> readFromTextFile(String pathname) throws IOException {
+    public ArrayList<String> readFromTextFile() throws IOException {
         ArrayList<String> strArray = new ArrayList<String>();
         File filename = new File("src/main/resources/file/IpFile.txt");
         InputStreamReader reader = new InputStreamReader(new FileInputStream(filename));
         BufferedReader br = new BufferedReader(reader);
         String line = "";
         line = br.readLine();
-        while(line != null) {
+        while (line != null) {
             strArray.add(line);
             line = br.readLine();
         }
         return strArray;
     }
-
-
-
-
-
-
 
 
 }

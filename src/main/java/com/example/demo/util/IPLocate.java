@@ -7,6 +7,11 @@ import java.util.regex.Pattern;
 
 public class IPLocate {
 
+    private static IPLocate ipLocate;
+
+    private IPLocate() {
+    }
+
     private long base_len = 64;
     private long offset_addr = 0;
     private long offset_owner = 0;
@@ -129,18 +134,21 @@ public class IPLocate {
     }
 
     public static IPLocate loadDat(String file_name) {
-        IPLocate h = new IPLocate();
-        byte[] bytes = fileTobyte(file_name);
-        byte[] asse = new byte[bytes.length - 16];
-        byte[] asse1 = new byte[8];
-        byte[] asse2 = new byte[8];
-        System.arraycopy(bytes, 16, asse, 0, bytes.length - 16);
-        System.arraycopy(bytes, 0, asse1, 0, 8);
-        System.arraycopy(bytes, 8, asse2, 0, 8);
-        h.offset_addr = bytesToLong(asse1);
-        h.offset_owner = bytesToLong(asse2);
-        h.offset_infe = asse;
 
-        return h;
+        if (ipLocate == null) {
+            ipLocate = new IPLocate();
+            byte[] bytes = fileTobyte(file_name);
+            byte[] asse = new byte[bytes.length - 16];
+            byte[] asse1 = new byte[8];
+            byte[] asse2 = new byte[8];
+            System.arraycopy(bytes, 16, asse, 0, bytes.length - 16);
+            System.arraycopy(bytes, 0, asse1, 0, 8);
+            System.arraycopy(bytes, 8, asse2, 0, 8);
+            ipLocate.offset_addr = bytesToLong(asse1);
+            ipLocate.offset_owner = bytesToLong(asse2);
+            ipLocate.offset_infe = asse;
+        }
+        return ipLocate;
+
     }
 }
